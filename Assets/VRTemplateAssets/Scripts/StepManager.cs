@@ -21,17 +21,38 @@ namespace Unity.VRTemplate
         }
 
         [SerializeField]
-        public TextMeshProUGUI m_StepButtonTextField;
+        private TextMeshProUGUI m_StepButtonTextField;
 
         [SerializeField]
-        List<Step> m_StepList = new List<Step>();
+        private List<Step> m_StepList = new List<Step>();
 
-        int m_CurrentStepIndex = 0;
+        private int m_CurrentStepIndex = 0;
 
         public void Next()
         {
+            ChangeStep(1);
+        }
+
+        public void Previous()
+        {
+            ChangeStep(-1);
+        }
+
+        private void ChangeStep(int stepChange)
+        {
             m_StepList[m_CurrentStepIndex].stepObject.SetActive(false);
-            m_CurrentStepIndex = (m_CurrentStepIndex + 1) % m_StepList.Count;
+            m_CurrentStepIndex += stepChange;
+            
+            // Ensure m_CurrentStepIndex is within bounds
+            if (m_CurrentStepIndex >= m_StepList.Count)
+            {
+                m_CurrentStepIndex = 0;
+            }
+            else if (m_CurrentStepIndex < 0)
+            {
+                m_CurrentStepIndex = m_StepList.Count - 1;
+            }
+
             m_StepList[m_CurrentStepIndex].stepObject.SetActive(true);
             m_StepButtonTextField.text = m_StepList[m_CurrentStepIndex].buttonText;
         }
