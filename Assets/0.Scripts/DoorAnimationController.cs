@@ -9,24 +9,43 @@ public class DoorAnimationController : MonoBehaviour
     [SerializeField]
     private AnimationClip closeDoor;
 
-    private Animator anim;
+    private Animator doorAnim;
 
     [SerializeField]
     private bool isOpen;
 
+    [SerializeField] private AudioClip _doorSound;
+
+    private AudioSource _audioSource;
+
     void Start()
     {
-        anim = GetComponent<Animator>();
+        doorAnim = GetComponent<Animator>();
+        isOpen = false;
+        _audioSource = GetComponent<AudioSource>();
+        if (_audioSource == null)
+        {
+            _audioSource = gameObject.AddComponent<AudioSource>();
+            _audioSource.clip = _doorSound;
+        }
     }
 
     public void DoorInteract()
     {
         if (isOpen)
-            anim.Play(closeDoor.name);
+        {
+            doorAnim.Play(closeDoor.name);
+        }
         else
-            anim.Play(openDoor.name);
+        {
+            // _audioSource.clip = _doorSound;
+            _audioSource.Play();
+            // _audioSource.PlayClipAtPoint(_doorSound);
+            doorAnim.Play(openDoor.name);
+        }
 
         isOpen = !isOpen;
     }
+
 
 }
