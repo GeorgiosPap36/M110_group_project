@@ -32,20 +32,13 @@ public class DoorAnimationController : MonoBehaviour
 
     public void DoorInteract()
     {
+        Debug.Log("ASDASD");
         if (isOpen)
-        {
             doorAnim.Play(closeDoor.name);
-        }
         else
-        {
-            // _audioSource.clip = _doorSound;
             _audioSource.Play();
-            // _audioSource.PlayClipAtPoint(_doorSound);
             doorAnim.Play(openDoor.name);
-        }
 
         isOpen = !isOpen;
     }
-
-
 }
