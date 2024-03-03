@@ -24,7 +24,6 @@ namespace UnityEngine.XR.Content.Interaction
         [SerializeField]
         private GameObject quiz2Objects;
 
-        private bool pressable = true;
 
         [SerializeField]
         private MeshRenderer roseContainerGlass;
@@ -38,23 +37,21 @@ namespace UnityEngine.XR.Content.Interaction
         [SerializeField]
         private Material transparentMaterial;
 
-
-
         [SerializeField]
-        private bool q1B1;
+        private XRGripButton gripButton1;
         [SerializeField]
-        private bool q1B2;
+        private XRGripButton gripButton2;
         [SerializeField]
-        private bool q1B3;
+        private XRGripButton gripButton3;
 
         [SerializeField]
         private XRLever lever1;
         [SerializeField]
         private XRLever lever2;
 
-
         private int quiz2IntractionTimes = 0;
 
+        private bool pressable = true;
 
         private string superposition = @"SUPERPOSITION:
     There is a red rose in the container on the table. Pick one of the following answers: 
@@ -63,72 +60,19 @@ namespace UnityEngine.XR.Content.Interaction
         private string entanglement = @"ENTANGLEMENT:
     The two levers are entangled, Move them to see how the behave.";
 
+        private string readyText = "The exhibit is now ready!";
+
         void Update()
         {
-            Quiz1();
-
             if (quiz2IntractionTimes >= 5)
             {
+                screenText.text = readyText;
                 openedCurtain.SetActive(true);
                 closedCurtain.SetActive(false);
             }
         }
 
-        private void Quiz1()
-        {
-            if (q1B1)
-            {
-                redRose.SetActive(false);
-                driedRose.SetActive(true);
-                roseContainerGlass.material = transparentMaterial;
-                StartCoroutine(changeMaterial(opaqueMaterial, 3));
-            }
-            else if (q1B2)
-            {
-                redRose.SetActive(true);
-                driedRose.SetActive(false);
-                roseContainerGlass.material = transparentMaterial;
-                StartCoroutine(changeMaterial(opaqueMaterial, 3));
-            }
-            else if (q1B3)
-            {
-                //Solution
-                roseContainerGlass.material = transparentMaterial;
-                StartCoroutine(changeFlower(1));
-                StartCoroutine(SolveQuiz1(7));
-            }
-        }
-
-        IEnumerator changeMaterial(Material mat, int secs)
-        {
-            pressable = false;
-            yield return new WaitForSeconds(secs);
-            roseContainerGlass.material = mat;
-            pressable = true;
-        }
-
-        IEnumerator SolveQuiz1(int secs)
-        {
-            pressable = false;
-            yield return new WaitForSeconds(secs);
-            screenText.text = entanglement;
-            quiz2Objects.SetActive(true);
-            quiz1Objects.SetActive(false);
-        }
-
-        IEnumerator changeFlower(int secs)
-        {
-            while (quiz1Objects.activeInHierarchy)
-            {
-                redRose.SetActive(true);
-                driedRose.SetActive(false);
-                yield return new WaitForSeconds(secs);
-                redRose.SetActive(false);
-                driedRose.SetActive(true);
-                yield return new WaitForSeconds(secs);
-            }
-        }
-
+        //Buttons - levers
         public void StartQuizButtonPressed()
         {
             screenText.text = superposition;
@@ -139,34 +83,42 @@ namespace UnityEngine.XR.Content.Interaction
         public void q1B1Pressed()
         {
             if (pressable)
-                q1B1 = true;
-        }
+            {
+                pressable = false;
+                UpdateButtons(pressable);
 
-        public void q1B1Released()
-        {
-            q1B1 = false;
+                redRose.SetActive(false);
+                driedRose.SetActive(true);
+                roseContainerGlass.material = transparentMaterial;
+                StartCoroutine(changeMaterial(opaqueMaterial, 2f));
+            }
         }
 
         public void q1B2Pressed()
         {
             if (pressable)
-                q1B2 = true;
-        }
+            {
+                pressable = false;
+                UpdateButtons(pressable);
 
-        public void q1B2Released()
-        {
-            q1B2 = false;
+                redRose.SetActive(true);
+                driedRose.SetActive(false);
+                roseContainerGlass.material = transparentMaterial;
+                StartCoroutine(changeMaterial(opaqueMaterial, 2f));
+            }
         }
 
         public void q1B3Pressed()
-        {
+        { //Solution
             if (pressable)
-                q1B3 = true;
-        }
+            {
+                pressable = false;
+                UpdateButtons(pressable);
 
-        public void q1B3Released()
-        {
-            q1B3 = false;
+                roseContainerGlass.material = transparentMaterial;
+                StartCoroutine(changeFlower(0.25f));
+                StartCoroutine(SolveQuiz1(3f));
+            }
         }
 
         public void LeverActivate1()
@@ -191,6 +143,44 @@ namespace UnityEngine.XR.Content.Interaction
         {
             lever1.value = false;
             quiz2IntractionTimes++;
+        }
+
+        /*--------------------*/
+        IEnumerator changeMaterial(Material mat, float secs)
+        {
+            yield return new WaitForSeconds(secs);
+            roseContainerGlass.material = mat;
+            pressable = true;
+            UpdateButtons(pressable);
+        }
+
+        IEnumerator SolveQuiz1(float secs)
+        {
+            pressable = false;
+            yield return new WaitForSeconds(secs);
+            screenText.text = entanglement;
+            quiz2Objects.SetActive(true);
+            quiz1Objects.SetActive(false);
+        }
+
+        IEnumerator changeFlower(float secs)
+        {
+            while (quiz1Objects.activeInHierarchy)
+            {
+                redRose.SetActive(true);
+                driedRose.SetActive(false);
+                yield return new WaitForSeconds(secs);
+                redRose.SetActive(false);
+                driedRose.SetActive(true);
+                yield return new WaitForSeconds(secs);
+            }
+        }
+
+        private void UpdateButtons(bool b)
+        {
+            gripButton1.enabled = b;
+            gripButton2.enabled = b;
+            gripButton3.enabled = b;
         }
     }
 }
