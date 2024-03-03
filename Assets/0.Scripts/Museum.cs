@@ -5,10 +5,8 @@ using TMPro;
 
 namespace UnityEngine.XR.Content.Interaction
 {
-
     public class Museum : MonoBehaviour
     {
-
         [SerializeField]
         private TextMeshPro screenText;
 
@@ -56,10 +54,8 @@ namespace UnityEngine.XR.Content.Interaction
         private string superposition = @"SUPERPOSITION:
     There is a red rose in the container on the table. Pick one of the following answers: 
     A.The rose is red, B.The rose is dried up, C.Both";
-
         private string entanglement = @"ENTANGLEMENT:
     The two levers are entangled, Move them to see how the behave.";
-
         private string readyText = "The exhibit is now ready!";
 
         void Update()
