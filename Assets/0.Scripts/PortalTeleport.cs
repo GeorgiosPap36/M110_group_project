@@ -16,7 +16,6 @@ public class PortalTeleport : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Debug.Log("ASDASD");
             transitionManager.GoToScene(2);
         }
     }
@@ -25,7 +24,6 @@ public class PortalTeleport : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Debug.Log("ASDASD");
             transitionManager.GoToScene(2);
         }
     }
