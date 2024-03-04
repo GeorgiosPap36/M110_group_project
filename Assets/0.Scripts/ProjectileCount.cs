@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 namespace UnityEngine.XR.Content.Interaction
 {
@@ -10,11 +11,16 @@ namespace UnityEngine.XR.Content.Interaction
         private GameObject portal;
 
         [SerializeField]
+        private TextMeshPro tmpText;
+
+        [SerializeField]
+        private int maxCounter;
+        [SerializeField]
         private int counter = 0;
 
         void Update()
         {
-            if (counter >= 15)
+            if (counter >= maxCounter)
             {
                 portal.SetActive(true);
             }
@@ -26,6 +32,7 @@ namespace UnityEngine.XR.Content.Interaction
             {
                 other.GetComponent<DestroyObject>().shouldBeDestroyed = false;
                 counter++;
+                tmpText.text = counter + "/15";
             }
         }
     }
