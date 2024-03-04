@@ -30,6 +30,11 @@ public class DoorAnimationController : MonoBehaviour
         }
     }
 
+    public bool IsOpen
+    {
+        get { return isOpen; }
+    }
+
     public void DoorInteract()
     {
         Debug.Log("ASDASD");

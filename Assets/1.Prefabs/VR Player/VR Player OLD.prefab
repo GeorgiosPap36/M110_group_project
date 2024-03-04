@@ -2494,7 +2494,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8552943170469304588}
   m_Layer: 0
-  m_Name: Complete XR Origin Set Up With Hand Presence Variant 1
+  m_Name: VR Player OLD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
