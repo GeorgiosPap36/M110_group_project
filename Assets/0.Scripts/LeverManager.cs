@@ -10,13 +10,14 @@ namespace UnityEngine.XR.Content.Interaction {
         [SerializeField]
         private XRLever l1c1, l2c1, l3c1, l1c2, l2c2, l3c2;
 
-        // [SerializeField]
-        // private GameObject door;
-
         [SerializeField]
         private DoorAnimationController doorController;
 
+        [SerializeField]
+        private GameObject portalBlue;
+
         private bool doorInteracted = false;
+        private bool portalInteracted = false;
 
         void Update()
         {
@@ -28,7 +29,10 @@ namespace UnityEngine.XR.Content.Interaction {
             {
                 openDoor();
             }
-            solvePuzzle();
+            if (!portalInteracted)
+            {
+                solvePuzzle();
+            }
         }
 
         void openDoor()
@@ -49,7 +53,14 @@ namespace UnityEngine.XR.Content.Interaction {
         void solvePuzzle()
         {
             if (l1c1.value && l2c2.value && !l3c1.value)
+            {
                 Debug.Log("SOLVED");
+                if (portalBlue != null && !portalBlue.activeSelf)
+                {
+                    portalBlue.SetActive(true);
+                    portalInteracted = true;
+                }
+            }
         }
     }
 }
