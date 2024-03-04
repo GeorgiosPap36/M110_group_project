@@ -7,11 +7,25 @@ namespace UnityEngine.XR.Content.Interaction
     {
         [SerializeField]
         [Tooltip("Time before destroying in seconds.")]
-        float m_Lifetime = 5f;
+        public float m_Lifetime = 5f;
+
+        public bool shouldBeDestroyed = true;
+
+        private float time = 0.0f;
 
         void Start()
         {
-            Destroy(gameObject, m_Lifetime);
+            //Destroy(gameObject, m_Lifetime);
+        }
+
+        void Update()
+        {
+            time += Time.deltaTime;
+            if (shouldBeDestroyed && time > m_Lifetime)
+            {
+                time = time - m_Lifetime;
+                Destroy(gameObject);
+            }
         }
     }
 }
