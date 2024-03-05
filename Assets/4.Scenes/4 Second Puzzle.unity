@@ -623,6 +623,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2942866452787875128, guid: c92949f214aba394e81020924af949ad, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7320396372062190872, guid: c92949f214aba394e81020924af949ad, type: 3}
       propertyPath: m_Name
       value: AnimatedDoor
