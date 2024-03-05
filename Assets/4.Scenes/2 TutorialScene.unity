@@ -5395,6 +5395,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1458952578640903558, guid: 6c8233fcc163c114fb1ac1178aafda41, type: 3}
+      propertyPath: m_MoveSpeed
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167525527124885296, guid: 6c8233fcc163c114fb1ac1178aafda41, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 6496301777782169847, guid: 6c8233fcc163c114fb1ac1178aafda41, type: 3}
       propertyPath: m_Name
       value: VR Player
@@ -9147,6 +9155,10 @@ PrefabInstance:
     - target: {fileID: 2304902795837412248, guid: da3b468b35b58334693dfcd04f6e06a7, type: 3}
       propertyPath: m_OnPress.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: SceneTransitionManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2304902795837412248, guid: da3b468b35b58334693dfcd04f6e06a7, type: 3}
+      propertyPath: m_OnPress.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2304902795837412248, guid: da3b468b35b58334693dfcd04f6e06a7, type: 3}
       propertyPath: m_OnPress.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
