@@ -16,8 +16,17 @@ namespace UnityEngine.XR.Content.Interaction {
         [SerializeField]
         private GameObject portalBlue;
 
+        [SerializeField]
+        private Material defaultLeverMaterial;
+        [SerializeField]
+        private Material highlightMaterial;
+
+        [SerializeField]
+        private float timeForHint;
+
         private bool doorInteracted = false;
         private bool portalInteracted = false;
+        private bool timeHasPassed = false;
 
         void Update()
         {
@@ -31,7 +40,11 @@ namespace UnityEngine.XR.Content.Interaction {
             }
             if (!portalInteracted)
             {
-                solvePuzzle();
+                HighlitghtLevers();
+            }
+            if (timeHasPassed)
+            {
+                HighlitghtLevers();
             }
         }
 
@@ -46,6 +59,7 @@ namespace UnityEngine.XR.Content.Interaction {
                     // door.SetActive(false);
                     doorController.DoorInteract();
                     doorInteracted = true;
+                    StartCoroutine(WaitToGiveHint(timeForHint));
                 }
             }
         }
@@ -61,6 +75,34 @@ namespace UnityEngine.XR.Content.Interaction {
                     portalInteracted = true;
                 }
             }
+        }
+
+        void HighlitghtLevers()
+        {
+            if (timeHasPassed)
+            {
+                LeverValueCheck(l1c1, true);
+                LeverValueCheck(l2c2, true);
+                LeverValueCheck(l3c1, false);
+            }
+        }
+
+        private void LeverValueCheck(XRLever lever, bool value)
+        {
+            if (lever.value == value)
+            {
+                lever.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material = defaultLeverMaterial;
+            }
+            else
+            {
+                lever.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material = highlightMaterial;
+            }
+        }
+
+        private IEnumerator WaitToGiveHint(float secs)
+        {
+            yield return new WaitForSeconds(secs);
+            timeHasPassed = true;
         }
     }
 }

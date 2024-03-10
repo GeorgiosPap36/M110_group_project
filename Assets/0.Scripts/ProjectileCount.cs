@@ -30,9 +30,12 @@ namespace UnityEngine.XR.Content.Interaction
         {
             if (other.tag == "Projectile")
             {
-                other.GetComponent<DestroyObject>().shouldBeDestroyed = false;
-                counter++;
-                tmpText.text = counter + "/15";
+                if (other.gameObject.layer == 9)//9 == ShotProjectile layer
+                {
+                    other.GetComponent<DestroyObject>().shouldBeDestroyed = false;
+                    counter++;
+                    tmpText.text = counter + "/15";
+                }
             }
         }
     }

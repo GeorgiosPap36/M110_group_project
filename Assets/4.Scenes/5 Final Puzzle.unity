@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0014371083, g: 0.001384888, b: 0.0013701947, a: 1}
+  m_IndirectSpecularColor: {r: 0.0014785795, g: 0.0013591028, b: 0.0012890887, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -944,6 +944,10 @@ PrefabInstance:
     - target: {fileID: 6496301777782169847, guid: 6c8233fcc163c114fb1ac1178aafda41, type: 3}
       propertyPath: m_Name
       value: VR Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6496301777782169847, guid: 6c8233fcc163c114fb1ac1178aafda41, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c8233fcc163c114fb1ac1178aafda41, type: 3}
@@ -2449,6 +2453,9 @@ MonoBehaviour:
   l3c2: {fileID: 920057625}
   doorController: {fileID: 1495040043}
   portalBlue: {fileID: 1287022653}
+  defaultLeverMaterial: {fileID: 2100000, guid: c3ca319dc8c9a404ebb7c4f883217b44, type: 2}
+  highlightMaterial: {fileID: 2100000, guid: 2b6275c76cd025a4485797ca4d1474a4, type: 2}
+  timeForHint: 10
 --- !u!1 &566217814205955577
 GameObject:
   m_ObjectHideFlags: 0
