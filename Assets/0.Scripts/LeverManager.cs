@@ -41,7 +41,7 @@ namespace UnityEngine.XR.Content.Interaction {
 
             if (!portalInteracted || timeHasPassed)
             {
-                HighlitghtLevers();
+                highlitghtLevers();
             }
 
             solvePuzzle();
@@ -58,7 +58,7 @@ namespace UnityEngine.XR.Content.Interaction {
                     // door.SetActive(false);
                     doorController.DoorInteract();
                     doorInteracted = true;
-                    StartCoroutine(WaitToGiveHint(timeForHint));
+                    StartCoroutine(waitToGiveHint(timeForHint));
                 }
             }
         }
@@ -76,17 +76,17 @@ namespace UnityEngine.XR.Content.Interaction {
             }
         }
 
-        void HighlitghtLevers()
+        void highlitghtLevers()
         {
             if (timeHasPassed)
             {
-                LeverValueCheck(l1c1, true);
-                LeverValueCheck(l2c2, true);
-                LeverValueCheck(l3c1, false);
+                leverValueCheck(l1c1, true);
+                leverValueCheck(l2c2, true);
+                leverValueCheck(l3c1, false);
             }
         }
 
-        private void LeverValueCheck(XRLever lever, bool value)
+        private void leverValueCheck(XRLever lever, bool value)
         {
             if (lever.value == value)
             {
@@ -98,7 +98,7 @@ namespace UnityEngine.XR.Content.Interaction {
             }
         }
 
-        private IEnumerator WaitToGiveHint(float secs)
+        private IEnumerator waitToGiveHint(float secs)
         {
             yield return new WaitForSeconds(secs);
             timeHasPassed = true;

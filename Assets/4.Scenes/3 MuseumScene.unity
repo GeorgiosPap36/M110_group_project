@@ -7875,6 +7875,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: VR Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6496301777782169847, guid: 6c8233fcc163c114fb1ac1178aafda41, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c8233fcc163c114fb1ac1178aafda41, type: 3}
 --- !u!114 &1624693736 stripped
@@ -11337,6 +11341,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4866041046921418661, guid: 18bd5cde114ab0d4ba24df6643c5b5eb, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 17b766015550a014a8f6c1cab71cb49d, type: 3}
+    - target: {fileID: 4866041046921418661, guid: 18bd5cde114ab0d4ba24df6643c5b5eb, type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 0.5
       objectReference: {fileID: 0}
@@ -11412,6 +11420,10 @@ PrefabInstance:
       propertyPath: MaxDistance
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4866041048591537134, guid: 18bd5cde114ab0d4ba24df6643c5b5eb, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a1ff99d83360ab140a16c93708730376, type: 3}
     - target: {fileID: 4866041048591537134, guid: 18bd5cde114ab0d4ba24df6643c5b5eb, type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 0.5
