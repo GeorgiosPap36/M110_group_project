@@ -38,14 +38,13 @@ namespace UnityEngine.XR.Content.Interaction {
             {
                 openDoor();
             }
-            if (!portalInteracted)
+
+            if (!portalInteracted || timeHasPassed)
             {
                 HighlitghtLevers();
             }
-            if (timeHasPassed)
-            {
-                HighlitghtLevers();
-            }
+
+            solvePuzzle();
         }
 
         void openDoor()
