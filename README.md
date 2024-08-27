@@ -5,4 +5,4 @@ This repository contains the final group project developed for the master's cour
 ## Plot
 Start your journey as a curious student in a Computer Museum. Drawn to a mysterious Quantum Mechanics exhibit, answer two key questions to unlock a hidden Quantum Computer. But be warned—touching the device whisks you away to the Quantum Realm! Navigate through puzzles in a world where quantum rules reign, seeking a way back to reality.
 
-You can find more information about the project in the game's [site](https://mariangelapol.github.io/M110_INTERACTIVE_SYSTEMS/#about).
+You can find more information about the project in the game's [site](https://mariangelapol.github.io/M110_INTERACTIVE_SYSTEMS/).
